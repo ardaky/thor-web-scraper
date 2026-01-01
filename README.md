@@ -26,11 +26,9 @@ Uygulama, yerel makinede çalışan Tor servisi üzerinden şifreli bir tünel o
 
 Projeyi klonlayın ve gerekli proxy modülünü indirin:
 
-'''
-git clone [https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git](https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git)
+'''git clone [https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git](https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git)
 cd Go-Tor-Scraper-CTI
-go mod tidy
-'''
+go mod tidy'''
 
 💻 Kullanım
 
@@ -39,7 +37,5 @@ go mod tidy
     targets.yaml dosyasına taramak istediğiniz .onion adreslerini ekleyin.
 
     Aracı çalıştırın:
-'''
-go run main.go
-'''
+'''go run main.go'''
 
