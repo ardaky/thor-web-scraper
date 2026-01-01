@@ -71,4 +71,4 @@ Tarama tamamlandığında proje klasöründe aşağıdaki yapı oluşur:
 ```
 
 ---
-*Geliştirici: [Adın Soyadın]*
+
