@@ -16,26 +16,59 @@ Proje, özellikle **"Kritik Kütüphane Kısıtlamaları"** (sadece Standart Kü
 
 Uygulama, yerel makinede çalışan Tor servisi üzerinden şifreli bir tünel oluşturarak hedeflere ulaşır.
 
-🛠️ Gereksinimler
+```mermaid
+graph LR
+    A[Go Tarama Aracı] -- SOCKS5 Trafiği --> B(Yerel Tor Servisi\n127.0.0.1:9150)
+    B -- Şifreli Tünel --> C((Tor Ağı\nRelay Sunucuları))
+    C -- Anonim İstek --> D[Hedef .onion Sitesi]
+    D -- HTML Yanıtı --> C
+    C --> B
+    B --> A
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#fff,stroke:#333,stroke-width:2px
+```
 
-    Go: 1.20 veya üzeri sürüm.
+## 🛠️ Gereksinimler
 
-    Tor Browser: Arka planda çalışır durumda olmalıdır (Port 9150).
+* **Go:** 1.20 veya üzeri sürüm.
+* **Tor Browser:** Arka planda çalışır durumda olmalıdır (Port 9150).
 
-  📦 Kurulum
+## 📦 Kurulum
 
 Projeyi klonlayın ve gerekli proxy modülünü indirin:
 
-'''git clone [https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git](https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git)
+```bash
+git clone [https://github.com/KULLANICI_ADIN/Go-Tor-Scraper-CTI.git](https://github.com/ardaky/Go-Tor-Scraper-CTI.git)
 cd Go-Tor-Scraper-CTI
-go mod tidy'''
+go mod tidy
+```
 
-💻 Kullanım
+## 💻 Kullanım
 
-    Tor Browser'ı açın ve bağlandığından emin olun (Arka planda açık kalsın).
+1. **Tor Browser**'ı açın ve bağlandığından emin olun (Arka planda açık kalsın).
+2. `targets.yaml` dosyasına taramak istediğiniz `.onion` adreslerini ekleyin.
+3. Aracı çalıştırın:
 
-    targets.yaml dosyasına taramak istediğiniz .onion adreslerini ekleyin.
+```bash
+go run main.go
+```
 
-    Aracı çalıştırın:
-'''go run main.go'''
+## 📂 Çıktı ve Log Yapısı
 
+Tarama tamamlandığında proje klasöründe aşağıdaki yapı oluşur:
+
+```text
+/Proje_Dizini
+│
+├── targets.yaml            # Hedef URL listesi
+├── scan_report.log         # Başarılı/Başarısız durum özeti
+├── error.log               # Detaylı hata kayıtları
+│
+└── /sonuclar               # İndirilen HTML dosyaları
+    ├── darknet...html
+    └── dready...html
+```
+
+---
+*Geliştirici: [Adın Soyadın]*
